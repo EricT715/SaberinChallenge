@@ -14,6 +14,7 @@ namespace ContactManager.Data
         public virtual DbSet<Address> Addresses { get; set; }
         private readonly IConfiguration _configuration;
 
+        
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options, IConfiguration configuration)
             : base(options)
@@ -28,7 +29,8 @@ namespace ContactManager.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var bill =
+      
+        var bill =
                 new Contact
                 {
                     Id = new Guid("930d4f10-9daf-4582-b4bb-cb9abfd382b3"),
