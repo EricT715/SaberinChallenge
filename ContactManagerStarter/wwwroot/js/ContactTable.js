@@ -52,7 +52,7 @@ $(function () {
                     '<a class="redText pointer float-right removeEmail" title="Delete Email">X</a>' +
                     '</li>');
 
-                
+                //the button to make one of the emails primary
                 if (isPrimary) {
                     $('.emailListItem').removeClass('primaryEmail');
                     emailItem.addClass('primaryEmail');
