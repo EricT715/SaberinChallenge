@@ -20,6 +20,23 @@
                 <td class="editContact" data-id="@contact.Id">@contact.Title</td>
                 <td class="editContact" data-id="@contact.Id">@contact.FirstName</td>
                 <td class="editContact" data-id="@contact.Id">@contact.LastName</td>
+                <td>
+                    @* <!-- Display either the primary email or the first email -->
+                    @if (contact.PrimaryEmail != null)
+                    {
+                        <span>@contact.PrimaryEmail.Address</span>
+                    }
+                    else if (contact.EmailAddresses.Any())
+                    {
+                        <!-- Show the first email if no primary email exists -->
+                        <span>@contact.EmailAddresses.First().Address</span>
+                    }
+                    else
+                    {
+                        <!-- Show a message if no emails are available -->
+                        <span>No email available</span>
+                    } *@
+                </td>
                 <td class="whiteBackground defaultCursor"><a class="redText float-right pointer deleteContact" title="Delete Contact" data-toggle="modal" data-target="#modal-delete" data-id="@contact.Id">X</a></td>
             </tr>
         }

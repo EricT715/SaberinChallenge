@@ -35,6 +35,9 @@ $(function () {
         let emailAddressType = $('#newEmailAddressType').val();
         let emailTypeClass;
 
+        let setAsPrimary = $('#setAsPrimary').val();
+        let isPrimary = setAsPrimary === "Yes";
+
         if (emailAddressType === "Personal") {
             emailTypeClass = "badge-primary"; //blue badge
         } else {
@@ -42,19 +45,27 @@ $(function () {
         }
 
         if (validateEmail(emailAddress)) {
-                  $("#emailList").append(
-            '<li class="list-group-item emailListItem" data-email="' + emailAddress + '" data-type="' + emailAddressType + '">' +
-            '<span class="badge ' + emailTypeClass + ' m-l-10">' + emailAddressType + '</span>' +
-            '<span class="m-l-20">' + emailAddress + ' </span>' +
-            '<a class="redText pointer float-right removeEmail" title="Delete Email">X</a>' +
-            '</li>');
-            $('#newEmailAddress').val("");  
-            $('#newEmailAddress').removeClass("invalidInput");
-            $('#invalidEmailFeedback').hide();
-        } else {
-            $('#newEmailAddress').addClass("invalidInput");
-            $('#invalidEmailFeedback').show();
-        }
+            if (validateEmail(emailAddress)) {
+                let emailItem = $('<li class="list-group-item emailListItem" data-email="' + emailAddress + '" data-type="' + emailAddressType + '">' +
+                    '<span class="badge ' + emailTypeClass + ' m-l-10">' + emailAddressType + '</span>' +
+                    '<span class="m-l-20">' + emailAddress + ' </span>' +
+                    '<a class="redText pointer float-right removeEmail" title="Delete Email">X</a>' +
+                    '</li>');
+
+                
+                if (isPrimary) {
+                    $('.emailListItem').removeClass('primaryEmail');
+                    emailItem.addClass('primaryEmail');
+                }
+
+                $("#emailList").append(emailItem);
+                $('#newEmailAddress').val("");
+                $('#newEmailAddress').removeClass("invalidInput");
+                $('#invalidEmailFeedback').hide();
+            } else {
+                $('#newEmailAddress').addClass("invalidInput");
+                $('#invalidEmailFeedback').show();
+            }
     });
 
     $(document).on("click", "#addNewAddress", function () {

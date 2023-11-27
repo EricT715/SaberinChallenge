@@ -13,7 +13,6 @@ namespace ContactManager.Data
         public string LastName { get; set; }
         public DateTime DOB { get; set; }
         public virtual List<EmailAddress> EmailAddresses { get; set; } = new List<EmailAddress>();
-
         public virtual List<Address> Addresses { get; set; } = new List<Address>();
     }
 

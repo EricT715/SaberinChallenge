@@ -3,6 +3,6 @@
     public enum EmailType
     {
         Personal,
-        Business
+        Business,
     }
 }

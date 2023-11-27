@@ -8,7 +8,8 @@ namespace ContactManager.Data
     public class EmailAddress : Entity
     {
         public string Email { get; set; }
-        public EmailType Type { get; set; }
+        public EmailType Type { get; set; }s
+        public bool isPrimary { get; set; } 
         public virtual Contact Contact { get; set; }
     }
 }
