@@ -35,37 +35,40 @@ $(function () {
         let emailAddressType = $('#newEmailAddressType').val();
         let emailTypeClass;
 
-        let setAsPrimary = $('#setAsPrimary').val();
-        let isPrimary = setAsPrimary === "Yes";
-
+        //let setAsPrimary = $('#setAsPrimary').val();
+        //let isPrimary = setAsPrimary === "Yes";
+        //function setAsPrimary() {
+        //    $('#setPrimaryEmailButton').prop('disabled', true); // Disable the button after setting as primary
+        //    // Find and update existing primary email elements
+        //    $('.emailListItem').each(function () {
+        //        let type = $(this).data('type');
+        //        if (type === emailAddressType) {
+        //            $(this).find('.badge').removeClass('badge-primary').addClass('badge-success');
+        //        }
+        //    });
+        //    // Find and set the new email as primary
+        //    $('.emailListItem[data-email="' + emailAddress + '"][data-type="' + emailAddressType + '"]').find('.badge').removeClass('badge-success').addClass('badge-primary');
+        //}
         if (emailAddressType === "Personal") {
             emailTypeClass = "badge-primary"; //blue badge
         } else {
             emailTypeClass = "badge-success"; //green badge
-        }
-
+        
         if (validateEmail(emailAddress)) {
-            if (validateEmail(emailAddress)) {
-                let emailItem = $('<li class="list-group-item emailListItem" data-email="' + emailAddress + '" data-type="' + emailAddressType + '">' +
-                    '<span class="badge ' + emailTypeClass + ' m-l-10">' + emailAddressType + '</span>' +
-                    '<span class="m-l-20">' + emailAddress + ' </span>' +
-                    '<a class="redText pointer float-right removeEmail" title="Delete Email">X</a>' +
-                    '</li>');
-
-                //the button to make one of the emails primary
-                if (isPrimary) {
-                    $('.emailListItem').removeClass('primaryEmail');
-                    emailItem.addClass('primaryEmail');
-                }
-
-                $("#emailList").append(emailItem);
-                $('#newEmailAddress').val("");
-                $('#newEmailAddress').removeClass("invalidInput");
-                $('#invalidEmailFeedback').hide();
-            } else {
-                $('#newEmailAddress').addClass("invalidInput");
-                $('#invalidEmailFeedback').show();
-            }
+            $("#emailList").append(
+                '<li class="list-group-item emailListItem" data-email="' + emailAddress + '" data-type="' + emailAddressType + '">' +
+                '<span class="badge ' + emailTypeClass + ' m-l-10">' + emailAddressType + '</span>' +
+                '<span class="m-l-20">' + emailAddress + ' </span>' +
+                '<a class="redText pointer float-right removeEmail" title="Delete Email">X</a>' +
+                '</li>');
+            $("#emailList").append(emailItemHTML);
+            $('#newEmailAddress').val("");
+            $('#newEmailAddress').removeClass("invalidInput");
+            $('#invalidEmailFeedback').hide();
+        } else {
+            $('#newEmailAddress').addClass("invalidInput");
+            $('#invalidEmailFeedback').show();
+        }
     });
 
     $(document).on("click", "#addNewAddress", function () {

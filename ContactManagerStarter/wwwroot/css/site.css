@@ -125,8 +125,13 @@ body {
     margin-right: 30px;
 }
 
+.btn-primary {
+    margin-top: 20px;
+    outline-color: black;
+    background-color: white;
+    color: black;
+}
 /* Validation */
-
 .invalidInput {
     border-color: #dc3545;
 }

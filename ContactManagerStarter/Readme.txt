@@ -3,7 +3,8 @@ primary email address. The way I wanted it to work was that there would be a dro
 would be logic to set one as primary which I tried to do but could not figure out the right syntax. With updating the grid first I wanted to test out how to display an email
 in general with the given data seed. I thought it would not be the hardest thing to do as the logic was already provided. What I tried to do was go into a loop within the
 contacts loop in the html which was able to cycle through the list of emails that was in the contacts.data. I was not able to get it to show any emails and was struggling with
-this for a while.
+this for a while. For this I also did not know whether the ui data is using the viewmodels or the data ones which was confusing. In the end I thought it was using the viewmodels,
+but could not figure it out.
 
 The only challenge that I was able to get done is adding the Date Of Birth input and making the Title dropdown. This was not the hardest task to do because all I had to do
 was make some small HTML changes.

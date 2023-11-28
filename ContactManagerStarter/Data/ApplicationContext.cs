@@ -63,6 +63,12 @@ namespace ContactManager.Data
 
             modelBuilder.Entity<Contact>().HasData(bill, steve, sundar);
 
+            //modelBuilder.Entity<EmailAddress>(entity =>
+            //{
+            //    // adding in value for IsPrimary
+            //    entity.Property(e => e.IsPrimary).HasDefaultValue(false).IsRequired();
+            //});
+
             modelBuilder.Entity<EmailAddress>().HasData(
                 new
                 {

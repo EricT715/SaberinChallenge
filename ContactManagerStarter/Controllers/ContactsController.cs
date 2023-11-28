@@ -75,6 +75,8 @@ namespace ContactManager.Controllers
         public async Task<IActionResult> GetContacts()
         {
             var contactList = await _context.Contacts
+                // Included this to get the email addresses
+                .Include(x => x.EmailAddresses)
                 .OrderBy(x => x.FirstName)
                 .ToListAsync();
 
