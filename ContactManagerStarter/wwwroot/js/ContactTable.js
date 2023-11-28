@@ -35,20 +35,20 @@ $(function () {
         let emailAddressType = $('#newEmailAddressType').val();
         let emailTypeClass;
 
-        //let setAsPrimary = $('#setAsPrimary').val();
-        //let isPrimary = setAsPrimary === "Yes";
-        //function setAsPrimary() {
-        //    $('#setPrimaryEmailButton').prop('disabled', true); // Disable the button after setting as primary
-        //    // Find and update existing primary email elements
-        //    $('.emailListItem').each(function () {
-        //        let type = $(this).data('type');
-        //        if (type === emailAddressType) {
-        //            $(this).find('.badge').removeClass('badge-primary').addClass('badge-success');
-        //        }
-        //    });
-        //    // Find and set the new email as primary
-        //    $('.emailListItem[data-email="' + emailAddress + '"][data-type="' + emailAddressType + '"]').find('.badge').removeClass('badge-success').addClass('badge-primary');
-        //}
+        let setAsPrimary = $('#setAsPrimary').val();
+        let isPrimary = setAsPrimary === "Yes";
+        function setAsPrimary() {
+            $('#setPrimaryEmailButton').prop('disabled', true); // Disable the button after setting as primary
+            // Find and update existing primary email elements
+            $('.emailListItem').each(function () {
+                let type = $(this).data('type');
+                if (type === emailAddressType) {
+                    $(this).find('.badge').removeClass('badge-primary').addClass('badge-success');
+                }
+            });
+            // Find and set the new email as primary
+            $('.emailListItem[data-email="' + emailAddress + '"][data-type="' + emailAddressType + '"]').find('.badge').removeClass('badge-success').addClass('badge-primary');
+        }
         if (emailAddressType === "Personal") {
             emailTypeClass = "badge-primary"; //blue badge
         } else {
